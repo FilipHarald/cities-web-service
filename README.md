@@ -1,6 +1,6 @@
 # Running the service
 
-## starting with docker
+## starting with docker-compose
 
 ### build and start
 Requires `docker-compose`
