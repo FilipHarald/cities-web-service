@@ -2,17 +2,19 @@ version: "3"
 services:
   cities-api-service:
     build: ./service
+    ports:
+      - 80:80
     environment:
       MONGO_URL: mongodb://root:pass@mongodb:27017/
       RADPID_API_KEY: ${RADPID_API_KEY}
-    ports:
-      - 80:80
 
   mongodb:
     image: mongo
     restart: always
     volumes:
       - ./mongodb-volume:/data/db
+    ports:
+      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
