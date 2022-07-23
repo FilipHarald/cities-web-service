@@ -1,10 +1,13 @@
 import http.client
 import json
+import os
+
+RADPID_API_KEY = os.environ.get("RADPID_API_KEY")
 
 conn = http.client.HTTPSConnection("wft-geo-db.p.rapidapi.com")
 
 headers = {
-    'X-RapidAPI-Key': "b1f82bbb67msh71b23e3269b0205p1e55b4jsne4814d6b8ff2",
+    'X-RapidAPI-Key': RADPID_API_KEY,
     'X-RapidAPI-Host': "wft-geo-db.p.rapidapi.com"
     }
 

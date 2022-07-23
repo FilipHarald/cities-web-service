@@ -4,6 +4,7 @@ services:
     build: ./service
     environment:
       MONGO_URL: mongodb://root:pass@mongodb:27017/
+      RADPID_API_KEY: ${RADPID_API_KEY}
     ports:
       - 80:80
 

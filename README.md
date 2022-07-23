@@ -3,10 +3,10 @@
 ## starting with docker-compose
 
 ### build and start
-Requires `docker-compose`
+Requires `docker-compose` and a subscription on [RapidAPI](https://rapidapi.com/).
 
 ```
-docker-compose up --build
+RADPID_API_KEY=[your-subscription-key-here] docker-compose up --build
 ```
 
 ### browsing and using API
