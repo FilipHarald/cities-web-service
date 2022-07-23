@@ -25,7 +25,7 @@ def format_cities(payload):
 
 def get_available(min_population):
     validate_int(min_population, "min_population")
-    conn.request("GET", "/v1/geo/cities?minPopulation=%s" % min_population, headers=headers)
+    conn.request("GET", f"/v1/geo/cities?minPopulation={min_population}", headers=headers)
     res = conn.getresponse()
     payload = res.read()
 
@@ -37,7 +37,7 @@ def get_available(min_population):
 def get_near(city_id, radius):
     validate_int(city_id, "city_id")
     validate_int(radius, "radius")
-    conn.request("GET", "/v1/geo/cities/%s/nearbyCities?radius=%s" % (city_id, radius), headers=headers)
+    conn.request("GET", f"/v1/geo/cities/{city_id}/nearbyCities?radius={radius}", headers=headers)
     res = conn.getresponse()
     payload = res.read()
 
