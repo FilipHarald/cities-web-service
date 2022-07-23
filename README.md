@@ -10,8 +10,7 @@ RADPID_API_KEY=[your-subscription-key-here] docker-compose up --build
 ## browsing and using API
 Once the container is running you should be able to visit [http://0.0.0.0/docs](http://0.0.0.0/docs) to get an overview of the API and to interactively test the endpoints.
 
-You will also find 2 scripts with example curl-requests in the project root. (`./example-request-1.sh` and `./example-request-2.sh`)
-
+You will also find some curl-scripts in the project root.
 
 # developing
 Requires `python` and a subscription on [RapidAPI](https://rapidapi.com/).
