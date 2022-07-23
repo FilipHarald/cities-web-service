@@ -1,0 +1,46 @@
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("wft-geo-db.p.rapidapi.com")
+
+headers = {
+    'X-RapidAPI-Key': "b1f82bbb67msh71b23e3269b0205p1e55b4jsne4814d6b8ff2",
+    'X-RapidAPI-Host': "wft-geo-db.p.rapidapi.com"
+    }
+
+def validate_int(value, name):
+    assert isinstance(value, int), f"{name} must be an integer"
+    assert value > 0, f"{name} must be above 0"
+
+def format_cities(payload):
+    formattedCities = []
+    print(payload)
+    for d in payload["data"]:
+        formattedCities.append({
+            "id": d["id"],
+            "city": d["city"],
+            "country": d["country"]
+        })
+    return formattedCities
+
+def get_available(min_population):
+    validate_int(min_population, "min_population")
+    conn.request("GET", "/v1/geo/cities?minPopulation=%s" % min_population, headers=headers)
+    res = conn.getresponse()
+    payload = res.read()
+
+    formattedData = format_cities(json.loads(payload.decode("utf-8")))
+
+    return formattedData
+
+
+def get_near(city_id, radius):
+    validate_int(city_id, "city_id")
+    validate_int(radius, "radius")
+    conn.request("GET", "/v1/geo/cities/%s/nearbyCities?radius=%s" % (city_id, radius), headers=headers)
+    res = conn.getresponse()
+    payload = res.read()
+
+    formattedData = format_cities(json.loads(payload.decode("utf-8")))
+
+    return formattedData
