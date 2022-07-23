@@ -1,22 +1,29 @@
-# Running the service
+# starting with docker-compose
 
-## starting with docker-compose
-
-### build and start
+## build and start
 Requires `docker-compose` and a subscription on [RapidAPI](https://rapidapi.com/).
 
 ```
 RADPID_API_KEY=[your-subscription-key-here] docker-compose up --build
 ```
 
-### browsing and using API
+## browsing and using API
 Once the container is running you should be able to visit [http://0.0.0.0/docs](http://0.0.0.0/docs) to get an overview of the API and to interactively test the endpoints.
 
 You will also find 2 scripts with example curl-requests in the project root. (`./example-request-1.sh` and `./example-request-2.sh`)
 
-## running the tests
+
+# developing
+Requires `python` and a subscription on [RapidAPI](https://rapidapi.com/).
+```
+RADPID_API_KEY=[your-subscription-key-here] uvicorn src.main:app --reload
+```
+
+# running the tests
+Requires `python`.
 ```
 cd service && \
 pip install -r requirements.txt && \
 pytest ./test_all.py
 ```
+
